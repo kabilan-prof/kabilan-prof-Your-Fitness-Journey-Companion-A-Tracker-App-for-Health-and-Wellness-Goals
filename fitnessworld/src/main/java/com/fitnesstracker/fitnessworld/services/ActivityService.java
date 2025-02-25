@@ -9,6 +9,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +18,11 @@ public class ActivityService {
 
     @Autowired
     private static ActivityLogRepository activityLogRepository;
+
+    public List<ActivityLog> getActivityLogs(String activityName, LocalDateTime startTimestamp) {
+        return activityLogRepository.findByActivityNameAndTimestampAfter(activityName, startTimestamp);
+    }
+
     
     public List<ActivityLog> getAllActivities() {
         return activityLogRepository.findAll();

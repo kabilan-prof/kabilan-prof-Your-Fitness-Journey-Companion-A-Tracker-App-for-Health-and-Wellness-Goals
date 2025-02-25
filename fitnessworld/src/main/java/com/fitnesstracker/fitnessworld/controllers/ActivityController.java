@@ -7,8 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.data.domain.Page;
+import org.springframework.format.annotation.DateTimeFormat;
 
-
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -40,6 +41,14 @@ public class ActivityController {
         return activity != null ? ResponseEntity.ok(activity) : ResponseEntity.notFound().build();
     }
     
+    @GetMapping("/search")
+    public ResponseEntity<List<ActivityLog>> searchActivityLogs(
+            @RequestParam String activityName,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime startTimestamp) {
+
+        List<ActivityLog> activities = activityService.getActivityLogs(activityName, startTimestamp);
+        return ResponseEntity.ok(activities);
+    }
 
 //     @GetMapping("/activities")
 // public List<ActivityLog> getActivities() {
