@@ -52,5 +52,9 @@ public class FitnessGoalService {
     public List<FitnessGoal> getGoalsByUser(Long userId, String goalType, int page, int size) {
         throw new UnsupportedOperationException("Unimplemented method 'getGoalsByUser'");
     }
+
+    public void deleteFitnessGoal(Long goalId) {
+        fitnessGoalRepository.deleteFitnessGoal(goalId);
+    }
     
 }
