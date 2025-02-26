@@ -8,11 +8,13 @@ public class User {
     @Id
     private Long id;
 
-    private String name;
+    private String Username;
 
     private String email;
 
     private String password;
+
+    private String phoneNumber;
 
     
     private String fitnessGoals;
@@ -26,11 +28,11 @@ public class User {
     }
 
     public String getName() {
-        return name;
+        return Username;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.Username = name;
     }
 
     public String getEmail() {
@@ -55,5 +57,15 @@ public class User {
 
     public void setFitnessGoals(String fitnessGoals) {
         this.fitnessGoals = fitnessGoals;
+    }
+
+    public void setphoneNumber(String phoneNumber)
+    {
+        this.phoneNumber = phoneNumber;
+    }
+    
+    public String getphoneNumber()
+    {
+        return phoneNumber;
     }
 }
