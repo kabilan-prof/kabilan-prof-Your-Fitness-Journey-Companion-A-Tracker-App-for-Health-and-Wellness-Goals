@@ -46,11 +46,10 @@ public class ChallengeService {
     
 
     public List<Challenge> getAllChallenges() {
-        return challengeRepository.findAll(); // Fetch all challenges
+        return challengeRepository.findAll(); 
     }
     
 
-    // Retrieve challenges by start date
     public List<Challenge> getChallengesByStartDate(LocalDate startDate) {
         if (startDate == null) {
             throw new IllegalArgumentException("Start date is required.");
