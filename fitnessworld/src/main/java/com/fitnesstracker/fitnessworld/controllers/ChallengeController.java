@@ -36,15 +36,7 @@ public ResponseEntity<String> addChallenge(@RequestBody Challenge challenge) {
 }
 
 
-    @PostMapping("/participate/{challengeId}")
-    public ResponseEntity<String> participateInChallenge(@PathVariable Long challengeId, @RequestParam Long userId) {
-        try {
-            challengeService.participateInChallenge(challengeId, userId);
-            return new ResponseEntity<>("Successfully joined the challenge.", HttpStatus.OK);
-        } catch (IllegalArgumentException e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
-        }
-    }
+    
 
     @GetMapping("/startDate/{startDate}")
     public ResponseEntity<List<Challenge>> getChallengesByStartDate(@PathVariable String startDate) {
