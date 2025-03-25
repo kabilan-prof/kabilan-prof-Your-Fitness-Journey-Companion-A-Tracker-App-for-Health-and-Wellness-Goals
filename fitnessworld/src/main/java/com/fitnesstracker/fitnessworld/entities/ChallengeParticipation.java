@@ -1,24 +1,26 @@
 package com.fitnesstracker.fitnessworld.entities;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "challenge_participation")
 public class ChallengeParticipation {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String status;
-    private Long userId; // User identifier
-    private Long challengeId; // Challenge identifier
 
-    // Constructors
-    public ChallengeParticipation() {
-    }
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    public ChallengeParticipation(Long id, String status, Long userId, Long challengeId) {
-        this.id = id;
-        this.status = status;
-        this.userId = userId;
-        this.challengeId = challengeId;
-    }
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "challenge_id")
+    private Challenge challenge;
 
-    // Getters and Setters
+
     public Long getId() {
         return id;
     }
@@ -35,19 +37,19 @@ public class ChallengeParticipation {
         this.status = status;
     }
 
-    public Long getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public Long getChallengeId() {
-        return challengeId;
+    public Challenge getChallenge() {
+        return challenge;
     }
 
-    public void setChallengeId(Long challengeId) {
-        this.challengeId = challengeId;
+    public void setChallenge(Challenge challenge) {
+        this.challenge = challenge;
     }
 }

@@ -24,23 +24,10 @@ public class Challenge {
     @Column(nullable = false)
     private String reward;
 
-    @ElementCollection
-    @CollectionTable(name = "challenge_participants", joinColumns = @JoinColumn(name = "challenge_id"))
-    @Column(name = "participant")
-    private List<String> participants;
+    @OneToMany(mappedBy = "challenge", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ChallengeParticipation> participants;
 
-    // Constructors
-    public Challenge() {}
 
-    public Challenge(String challengeName, LocalDate startDate, LocalDate endDate, String reward, List<String> participants) {
-        this.challengeName = challengeName;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.reward = reward;
-        this.participants = participants;
-    }
-
-    // Getters and Setters
     public Long getId() {
         return id;
     }
@@ -81,23 +68,11 @@ public class Challenge {
         this.reward = reward;
     }
 
-    public List<String> getParticipants() {
+    public List<ChallengeParticipation> getParticipants() {
         return participants;
     }
 
-    public void setParticipants(List<String> participants) {
+    public void setParticipants(List<ChallengeParticipation> participants) {
         this.participants = participants;
-    }
-
-    @Override
-    public String toString() {
-        return "Challenge{" +
-                "id=" + id +
-                ", challengeName='" + challengeName + '\'' +
-                ", startDate=" + startDate +
-                ", endDate=" + endDate +
-                ", reward='" + reward + '\'' +
-                ", participants=" + participants +
-                '}';
     }
 }

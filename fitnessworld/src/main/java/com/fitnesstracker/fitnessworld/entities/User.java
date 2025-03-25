@@ -1,6 +1,7 @@
 package com.fitnesstracker.fitnessworld.entities;
 
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 public class User {
@@ -9,16 +10,23 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String Username;
-
-    private String email;
-
+    private String username;
     private String password;
-
+    private String email;
+    private String firstName;
+    private String lastName;
     private String phoneNumber;
+    private String address;
 
     
-    private String fitnessGoals;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<ActivityLog> activitiesLog;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<ChallengeParticipation> challenges;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<FitnessGoal> goals;
 
     public Long getId() {
         return id;
@@ -28,20 +36,12 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return Username;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.Username = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -52,21 +52,67 @@ public class User {
         this.password = password;
     }
 
-    public String getFitnessGoals() {
-        return fitnessGoals;
+    public String getEmail() {
+        return email;
     }
 
-    public void setFitnessGoals(String fitnessGoals) {
-        this.fitnessGoals = fitnessGoals;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public void setphoneNumber(String phoneNumber)
-    {
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-    
-    public String getphoneNumber()
-    {
-        return phoneNumber;
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public List<ActivityLog> getActivitiesLog() {
+        return activitiesLog;
+    }
+
+    public void setActivitiesLog(List<ActivityLog> activitiesLog) {
+        this.activitiesLog = activitiesLog;
+    }
+
+    public List<ChallengeParticipation> getChallenges() {
+        return challenges;
+    }
+
+    public void setChallenges(List<ChallengeParticipation> challenges) {
+        this.challenges = challenges;
+    }
+
+    public List<FitnessGoal> getGoals() {
+        return goals;
+    }
+
+    public void setGoals(List<FitnessGoal> goals) {
+        this.goals = goals;
     }
 }

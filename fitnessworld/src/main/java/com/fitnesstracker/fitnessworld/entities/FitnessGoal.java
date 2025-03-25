@@ -2,6 +2,7 @@ package com.fitnesstracker.fitnessworld.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 public class FitnessGoal {
@@ -10,8 +11,10 @@ public class FitnessGoal {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String goalType;
-
+    private String goalType; // e.g., weight loss, muscle gain
+    private double targetValue; // Target value for the goal (e.g., target weight or muscle mass)
+    private LocalDate startDate;
+    private LocalDate endDate;
     private String description;
 
     @JsonBackReference
@@ -33,6 +36,30 @@ public class FitnessGoal {
 
     public void setGoalType(String goalType) {
         this.goalType = goalType;
+    }
+
+    public double getTargetValue() {
+        return targetValue;
+    }
+
+    public void setTargetValue(double targetValue) {
+        this.targetValue = targetValue;
+    }
+
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
+    }
+
+    public LocalDate getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
     }
 
     public String getDescription() {
