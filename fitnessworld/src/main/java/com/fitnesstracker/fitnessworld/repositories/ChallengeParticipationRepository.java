@@ -12,7 +12,7 @@ public interface ChallengeParticipationRepository extends JpaRepository<Challeng
     
     // Custom query methods (if needed)
     List<ChallengeParticipation> findByUserId(Long userId);
-    
+
     List<ChallengeParticipation> findByChallengeId(Long challengeId);
 
 }

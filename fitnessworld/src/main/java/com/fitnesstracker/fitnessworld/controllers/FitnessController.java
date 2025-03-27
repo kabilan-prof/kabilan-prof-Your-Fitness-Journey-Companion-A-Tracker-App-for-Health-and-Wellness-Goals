@@ -19,7 +19,7 @@ public class FitnessController {
     private FitnessGoalService fitnessGoalService;
 
     // Create a goal for a specific user
-    @PostMapping("/user/{userId}")
+    @PostMapping
     public ResponseEntity<FitnessGoal> createGoal(@PathVariable Long userId, @RequestBody FitnessGoal goal) {
         try {
             FitnessGoal createdGoal = fitnessGoalService.createGoal(userId, goal);
@@ -45,7 +45,7 @@ public class FitnessController {
     }
 
     // Get goals by user and goal type
-    @GetMapping("/user/{userId}")
+    @GetMapping("/{userId}")
     public ResponseEntity<List<FitnessGoal>> getGoalsByUser(
             @PathVariable Long userId,
             @RequestParam(required = false) String goalType,

@@ -13,9 +13,9 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-@Repository
-public interface FitnessGoalRepository extends JpaRepository<FitnessGoal, Long> {
-    Page<FitnessGoal> findByUserId(Long userId, Pageable pageable);  // Changed to Page<FitnessGoal>
+    @Repository
+    public interface FitnessGoalRepository extends JpaRepository<FitnessGoal, Long> {
+        Page<FitnessGoal> findByUserId(Long userId, Pageable pageable);  // Changed to Page<FitnessGoal>
 
     Page<FitnessGoal> findByUserIdAndGoalType(Long userId, String goalType, Pageable pageable);
 
