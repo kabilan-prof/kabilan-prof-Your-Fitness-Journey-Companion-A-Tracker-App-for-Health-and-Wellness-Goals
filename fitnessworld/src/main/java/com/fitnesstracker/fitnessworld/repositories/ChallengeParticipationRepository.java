@@ -1,6 +1,5 @@
 package com.fitnesstracker.fitnessworld.repositories;
 
-import com.fitnesstracker.fitnessworld.dto.ChallengeParticipationDTO;
 import com.fitnesstracker.fitnessworld.entities.ChallengeParticipation;
 
 import org.springframework.data.jpa.repository.JpaRepository;
