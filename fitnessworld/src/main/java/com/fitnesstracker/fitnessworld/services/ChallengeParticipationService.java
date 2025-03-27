@@ -2,7 +2,6 @@ package com.fitnesstracker.fitnessworld.services;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.fitnesstracker.fitnessworld.entities.ChallengeParticipation;
 import com.fitnesstracker.fitnessworld.repositories.ChallengeParticipationRepository;
@@ -12,7 +11,6 @@ public class ChallengeParticipationService {
 
     private final ChallengeParticipationRepository challengeParticipationRepository;
 
-    @Autowired
     public ChallengeParticipationService(ChallengeParticipationRepository challengeParticipationRepository) {
         this.challengeParticipationRepository = challengeParticipationRepository;
     }

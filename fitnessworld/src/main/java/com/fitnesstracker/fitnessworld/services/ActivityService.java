@@ -2,7 +2,6 @@ package com.fitnesstracker.fitnessworld.services;
 
 import com.fitnesstracker.fitnessworld.entities.ActivityLog;
 import com.fitnesstracker.fitnessworld.repositories.ActivityLogRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -16,7 +15,6 @@ public class ActivityService {
 
     private final ActivityLogRepository activityLogRepository;
 
-    @Autowired
     public ActivityService(ActivityLogRepository activityLogRepository) {
         this.activityLogRepository = activityLogRepository;
     }
