@@ -1,5 +1,7 @@
 package com.fitnesstracker.fitnessworld.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -14,12 +16,13 @@ public class ChallengeParticipation {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonBackReference
     private User user;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     @JoinColumn(name = "challenge_id")
+    @JsonIgnore // Prevents recursive embedding of Challenge inside participants
     private Challenge challenge;
-
 
     public Long getId() {
         return id;

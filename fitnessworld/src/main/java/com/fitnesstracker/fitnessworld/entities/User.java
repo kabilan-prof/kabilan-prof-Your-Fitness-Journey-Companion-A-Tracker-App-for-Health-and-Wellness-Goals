@@ -3,6 +3,8 @@ package com.fitnesstracker.fitnessworld.entities;
 import jakarta.persistence.*;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class User {
 
@@ -23,6 +25,7 @@ public class User {
     private List<ActivityLog> activitiesLog;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+        @JsonManagedReference
     private List<ChallengeParticipation> challenges;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)

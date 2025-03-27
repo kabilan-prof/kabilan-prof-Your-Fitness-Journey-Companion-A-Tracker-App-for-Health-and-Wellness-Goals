@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "challenges")
 public class Challenge {
@@ -25,8 +27,8 @@ public class Challenge {
     private String reward;
 
     @OneToMany(mappedBy = "challenge", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference // Ensures proper serialization of participants
     private List<ChallengeParticipation> participants;
-
 
     public Long getId() {
         return id;
