@@ -11,15 +11,15 @@ public class FitnessGoal {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String goalType; // e.g., weight loss, muscle gain
-    private double targetValue; // Target value for the goal (e.g., target weight or muscle mass)
+    private String goalType;
+    private double targetValue;
     private LocalDate startDate;
     private LocalDate endDate;
     private String description;
 
-    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonBackReference
     private User user;
 
     public Long getId() {

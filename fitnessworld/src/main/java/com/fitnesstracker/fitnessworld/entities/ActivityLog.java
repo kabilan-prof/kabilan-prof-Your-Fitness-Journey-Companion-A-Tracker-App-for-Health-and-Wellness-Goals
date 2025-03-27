@@ -1,6 +1,6 @@
 package com.fitnesstracker.fitnessworld.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
@@ -13,14 +13,14 @@ public class ActivityLog {
 
     private String activityName;
     private LocalDateTime timestamp;
-    private int duration; 
+    private int duration;
     private int caloriesBurned;
-    private String activityType; 
-    private int value; 
+    private String activityType;
+    private int value;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    @JsonIgnore
+    @JsonBackReference
     private User user;
 
     public Long getId() {

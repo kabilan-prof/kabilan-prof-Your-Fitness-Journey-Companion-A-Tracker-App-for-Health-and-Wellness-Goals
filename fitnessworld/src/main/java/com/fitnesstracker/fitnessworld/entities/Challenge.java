@@ -3,7 +3,6 @@ package com.fitnesstracker.fitnessworld.entities;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
@@ -14,20 +13,13 @@ public class Challenge {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
     private String challengeName;
-
-    @Column(nullable = false)
     private LocalDate startDate;
-
-    @Column(nullable = false)
     private LocalDate endDate;
-
-    @Column(nullable = false)
     private String reward;
 
     @OneToMany(mappedBy = "challenge", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference // Ensures proper serialization of participants
+    @JsonManagedReference
     private List<ChallengeParticipation> participants;
 
     public Long getId() {

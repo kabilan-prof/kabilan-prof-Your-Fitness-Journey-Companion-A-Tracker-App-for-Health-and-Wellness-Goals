@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class User {
@@ -12,24 +13,31 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique = true, nullable = false)
     private String username;
+
+    @JsonIgnore
     private String password;
+
+    @Column(unique = true, nullable = false)
     private String email;
+
     private String firstName;
     private String lastName;
     private String phoneNumber;
     private String address;
 
-    
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<ActivityLog> activitiesLog;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-        @JsonManagedReference
-    private List<ChallengeParticipation> challenges;
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<FitnessGoal> goals;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    private List<ChallengeParticipation> challenges;
 
     public Long getId() {
         return id;
@@ -103,19 +111,19 @@ public class User {
         this.activitiesLog = activitiesLog;
     }
 
-    public List<ChallengeParticipation> getChallenges() {
-        return challenges;
-    }
-
-    public void setChallenges(List<ChallengeParticipation> challenges) {
-        this.challenges = challenges;
-    }
-
     public List<FitnessGoal> getGoals() {
         return goals;
     }
 
     public void setGoals(List<FitnessGoal> goals) {
         this.goals = goals;
+    }
+
+    public List<ChallengeParticipation> getChallenges() {
+        return challenges;
+    }
+
+    public void setChallenges(List<ChallengeParticipation> challenges) {
+        this.challenges = challenges;
     }
 }
