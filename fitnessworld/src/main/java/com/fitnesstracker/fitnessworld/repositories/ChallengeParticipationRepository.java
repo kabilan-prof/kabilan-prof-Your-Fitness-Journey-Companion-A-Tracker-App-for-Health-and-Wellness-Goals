@@ -1,6 +1,8 @@
 package com.fitnesstracker.fitnessworld.repositories;
 
+import com.fitnesstracker.fitnessworld.dto.ChallengeParticipationDTO;
 import com.fitnesstracker.fitnessworld.entities.ChallengeParticipation;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import java.util.List;
@@ -12,5 +14,6 @@ public interface ChallengeParticipationRepository extends JpaRepository<Challeng
     List<ChallengeParticipation> findByUserId(Long userId);
     
     List<ChallengeParticipation> findByChallengeId(Long challengeId);
+
 }
 

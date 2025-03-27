@@ -1,7 +1,7 @@
 package com.fitnesstracker.fitnessworld.services;
 
 import com.fitnesstracker.fitnessworld.entities.FitnessGoal;
-import com.fitnesstracker.fitnessworld.entities.User;
+// import com.fitnesstracker.fitnessworld.entities.User;
 import com.fitnesstracker.fitnessworld.repositories.FitnessGoalRepository;
 import com.fitnesstracker.fitnessworld.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

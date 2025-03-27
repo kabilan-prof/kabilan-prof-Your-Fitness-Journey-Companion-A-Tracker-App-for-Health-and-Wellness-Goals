@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/users")
@@ -69,17 +70,20 @@ public ResponseEntity<List<User>> getUsersWithPagination(@RequestParam(defaultVa
         return ResponseEntity.ok(user);
     }
 
-    @PostMapping("/add")
-    public ResponseEntity<User> insertUser(@RequestBody User user) {
-        User newUser = userService.insertUser(user);
-        return ResponseEntity.ok(newUser);
-    }
+    
 
     @DeleteMapping("/delete")
     public ResponseEntity<String> deleteUser(@RequestParam String email) {
         userService.deleteUserByEmail(email);
         return ResponseEntity.ok("User deleted successfully!");
     }
+    
+    @GetMapping("/{id}")
+    public ResponseEntity<Optional<User>> getUserById(@PathVariable Long id) {
+        Optional<User> user = userService.getUserById(id);
+        return user != null ? ResponseEntity.ok(user) : ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
+
 
    
 }

@@ -1,5 +1,6 @@
 package com.fitnesstracker.fitnessworld.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
@@ -10,18 +11,16 @@ public class ActivityLog {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    
-
     private String activityName;
     private LocalDateTime timestamp;
     private int duration; 
     private int caloriesBurned;
-
-    private String activityType; // e.g., steps, workout, water intake
-    private int value; // Value associated with the activity (e.g., steps count)
+    private String activityType; 
+    private int value; 
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonIgnore
     private User user;
 
     public Long getId() {
