@@ -27,6 +27,7 @@ public class User {
     private String phoneNumber;
     private String address;
 
+    //add 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private List<ActivityLog> activitiesLog;
